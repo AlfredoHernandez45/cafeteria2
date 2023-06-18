@@ -28,7 +28,7 @@ function generarTextoAleatorio($longitud) {
 $texto = generarTextoAleatorio(10);
 // echo $texto;
 
-// session_start();
+session_start();
 
 
 ?>
@@ -59,8 +59,14 @@ $texto = generarTextoAleatorio(10);
 			<li><a href="#home">Inicio</a></li>
 			<li><a href="#products">Productos</a></li> <!-- Vinculos del menu a direccionar -->
 			<li><a href="#direccion">Dirección y Contacto</a></li>
-			<li><a href="sesion.php">Iniciar Sesion</a></li>
-			<li><a href="../index/index.html">Cerra Sesión</a></li> <!-- iniciar sesion -->
+			<?php
+				// Si no ha iniciado sesion 
+				if(empty($_SESSION['correo'])){
+					echo '<li><a href="sesion.php">Iniciar Sesion</a></li>';
+				}else{
+					echo '<li><a href="cerrar-sesion.php">Cerra Sesión</a></li>';
+				}
+			?>
 		</ul>
 
 		<div class="header-icon">
@@ -124,14 +130,14 @@ $texto = generarTextoAleatorio(10);
 
 								<!-- Se agrega un campo para ingresar la cantidad deseada -->
 								<P>Cantidad: <input type="number" name="cantidad" value="1"></P>
-								<!-- <?php echo $texto; ?> texto para usuario -->
+								<!-- <?php echo $_SESSION['correo']; ?> texto para usuario -->
 
-								<!-- Se agrega un botón para enviar el formulario -->
-								<button type="submit" name="agregarCarrito">Agregar al carrito</button>
-							</form>
+									<!-- Se agrega un botón para enviar el formulario -->
+									<button type="submit" name="agregarCarrito">Agregar al carrito</button>
+								</form>
+							</div>
 						</div>
 					</div>
-				</div>
 			<?php } ?>
 			<!-- Finaliza el bucle foreach -->
 			<br>
