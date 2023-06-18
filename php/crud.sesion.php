@@ -46,7 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $usuarios->obtenerUsuario($email); // manda a buscar el usuario que ingreso 
     $_SESSION['correo'] = $usuario->getCorreo(); // se guarda el correo del usuario en la variable de sesión.
     $_SESSION['nombre'] = $usuario->getNombre(); // se guarda el correo del usuario en la variable de sesión.
-    if($_SESSION['nombre'] = "administrador"){
+    
+    if($_SESSION['nombre'] == "administrador"){
       echo "<script> alert('Bienvenido de nuevo Admin'); window.location='mostrar.php' </script>";
     }
     // echo $_SESSION['usuario'];
