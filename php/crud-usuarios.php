@@ -1,5 +1,6 @@
 <?php
 require_once('conexion.php');
+require_once('usuario.php');
 
 class crudUsuario {
     public function __construct() {}
@@ -40,21 +41,25 @@ class crudUsuario {
         $eliminar->execute();
     }
 
-    public function obtenerUsuario($idCompra) {
-        $db = Db::conectar();
-        $select = $db->prepare('SELECT * FROM usuarios WHERE id_compra = :idCompra');
-        $select->bindValue('idCompra', $idCompra);
-        $select->execute();
+    public function obtenerUsuario($correo) {
+        $db = Db::conectar(); // Conexión a la base de datos utilizando la clase Db
 
-        $usuario = $select->fetch();
-        $myUsuario = new Usuario();
-        $myUsuario->setIdCompra($usuario['id_compra']);
+        // Preparar la consulta SQL para obtener un usuario con el correo especificado
+        $select = $db->prepare('SELECT * FROM usuarios WHERE correo = :correo');
+        $select->bindValue('correo', $correo); // Asignar el valor del parámetro :correo con el valor recibido
+
+        $select->execute(); // Ejecutar la consulta SQL
+
+        $usuario = $select->fetch(); // Obtener la fila de resultados como un arreglo asociativo
+
+        $myUsuario = new Usuario(); // Crear una instancia de la clase Usuario para almacenar los datos obtenidos
+
+        // Asignar los valores obtenidos de la consulta a las propiedades de la instancia de Usuario
         $myUsuario->setCorreo($usuario['correo']);
-        $myUsuario->setCveArticulo($usuario['cveArticulo']);
-        $myUsuario->setCantidadProducto($usuario['cantidadProducto']);
-        $myUsuario->setTotalPago($usuario['totalPago']);
+        $myUsuario->setPassword($usuario['contrasena']);
+        $myUsuario->setNombre($usuario['nombre']);
 
-        return $myUsuario;
+        return $myUsuario; // Devolver la instancia de Usuario con los datos del usuario encontrado
     }
 
     public function actualizar($usuario) {

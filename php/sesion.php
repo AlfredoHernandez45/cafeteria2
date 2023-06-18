@@ -76,7 +76,7 @@
   <a name="sesion"></a><!-- Vinculos del menu a direccionar sesion -->
   <form action="crud.sesion.php" method="post">
     <div class="imgcontainer">
-      <img src="/cafeteria/public/img/login.png" alt="Avatar" class="avatar">
+      <img src="./im/login.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
@@ -97,7 +97,7 @@
       <div class="container" style="background-color:#f1f1f1">
       <form action="regresa">
         <!--<a href="index.html">Regresa</a>-->
-        <button type="button" class="cancelbtn"> <a href="mostrar.php">Regresarar</a></button>
+        <button type="button" onclick="window.history.back();" class="cancelbtn">Regresar</button>
         <!--<button type="button" class="cancelbtn">Regresar</button>-->
       </form>
     </form>
