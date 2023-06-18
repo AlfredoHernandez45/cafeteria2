@@ -115,12 +115,12 @@ $subtotal = 0;
 							<!-- <h2>prueba10</h2> -->
 							<input type="text">
 							<input type="hidden" name="cveArticulo" value="<?php echo $carrito->getCveArticulo(); ?>">
-                            <input type="hidden" name="cantidadProducto" value="<?php echo $carrito->getCantidad(); ?>">
+                            <input type="hidden" name="cantidadProducto" value="<?php echo $carrito->getCantidadProducto(); ?>">
                             <input type="hidden" name="subtotal" value="<?php echo $carrito->getPrecio(); ?>">
                             <input type="hidden" name="total" value="<?php echo $carrito->getSubtotal(); ?>">
                             <h2>prueba10</h2>
 							<!-- Se agrega un campo oculto con el correo del usuario -->
-							<input type="text" name="correo" value="<?php echo $usuario->getCorreo(); ?>">
+							<!-- <input type="text" name="correo" value="<?php echo $usuario->getCorreo(); ?>"> -->
 
 							<!-- <button>Realizar Pago</button> -->
 							<button type="submit" name="agregarCarrito">Realizar Pago</button>
