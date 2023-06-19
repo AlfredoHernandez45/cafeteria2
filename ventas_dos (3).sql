@@ -1,38 +1,32 @@
 
---
--- Base de datos: `ventas_dos`
---
+-- Validar si la base de datos existe y borrarla si es necesario
+DROP DATABASE IF EXISTS `ventas_dos`;
 
+-- Crear la base de datos
 CREATE DATABASE IF NOT EXISTS `ventas_dos`;
 USE `ventas_dos`;
 
--- --------------------------------------------------------
---
--- Estructura de tabla para la tabla `articulos`
---
+-- Validar y borrar la tabla `articulos`
+DROP TABLE IF EXISTS `articulos`;
 
+-- Crear la tabla `articulos`
 CREATE TABLE `articulos` (
   `cveArticulo` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `precio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
 -- Volcado de datos para la tabla `articulos`
---
-
 INSERT INTO `articulos` (`cveArticulo`, `nombre`, `precio`) VALUES
 ('01', 'Capuchino', 32),
 ('2', 'TacoBirria', 28),
 ('3', 'Prueba3', 656),
 ('8', 'Taco sencillo', 10);
 
--- --------------------------------------------------------
+-- Validar y borrar la tabla `carrito`
+DROP TABLE IF EXISTS `carrito`;
 
---
--- Estructura de tabla para la tabla `carrito`
---
-
+-- Crear la tabla `carrito`
 CREATE TABLE `carrito` (
   `id_compra` int(50) NOT NULL,
   `correo` varchar(50) DEFAULT NULL,
@@ -42,10 +36,7 @@ CREATE TABLE `carrito` (
   `subtotal` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
 -- Volcado de datos para la tabla `carrito`
---
-
 INSERT INTO `carrito` (`id_compra`, `correo`, `cveArticulo`, `cantidadProducto`, `precio`, `subtotal`) VALUES
 (3, NULL, '01', 1, 10, 0),
 (4, NULL, '3', 1, 656, 0),
@@ -69,12 +60,10 @@ INSERT INTO `carrito` (`id_compra`, `correo`, `cveArticulo`, `cantidadProducto`,
 (22, 'lulu@gmail.com', '2', 3, 28, 84),
 (23, 'lulu@gmail.com', '8', 5, 10, 50);
 
--- --------------------------------------------------------
+-- Validar y borrar la tabla `detalleventa`
+DROP TABLE IF EXISTS `detalleventa`;
 
---
--- Estructura de tabla para la tabla `detalleventa`
---
-
+-- Crear la tabla `detalleventa`
 CREATE TABLE `detalleventa` (
   `claveDetalle` int(50) NOT NULL,
   `claveVenta` int(50) NOT NULL,
@@ -87,12 +76,10 @@ CREATE TABLE `detalleventa` (
   `total` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+-- Validar y borrar la tabla `pago`
+DROP TABLE IF EXISTS `pago`;
 
---
--- Estructura de tabla para la tabla `pago`
---
-
+-- Crear la tabla `pago`
 CREATE TABLE `pago` (
   `clavePago` int(11) NOT NULL,
   `nombre` varchar(30) DEFAULT NULL,
@@ -104,22 +91,17 @@ CREATE TABLE `pago` (
   `importe` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+-- Validar y borrar la tabla `usuarios`
+DROP TABLE IF EXISTS `usuarios`;
 
---
--- Estructura de tabla para la tabla `usuarios`
---
-
+-- Crear la tabla `usuarios`
 CREATE TABLE `usuarios` (
   `correo` varchar(50) NOT NULL,
   `contrasena` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
 -- Volcado de datos para la tabla `usuarios`
---
-
 INSERT INTO `usuarios` (`correo`, `contrasena`, `nombre`) VALUES
 ('2@gmail.com', '1', ''),
 ('3@gmail.com', '1', ''),
@@ -133,12 +115,10 @@ INSERT INTO `usuarios` (`correo`, `contrasena`, `nombre`) VALUES
 ('tommy@gmail.com', 'tommy', 'tommy'),
 ('wolf@gmail.com', 'wolf', 'wolf');
 
--- --------------------------------------------------------
+-- Validar y borrar la tabla `venta`
+DROP TABLE IF EXISTS `venta`;
 
---
--- Estructura de tabla para la tabla `venta`
---
-
+-- Crear la tabla `venta`
 CREATE TABLE `venta` (
   `claveVenta` int(50) NOT NULL,
   `usuario` varchar(50) DEFAULT NULL,
@@ -146,92 +126,62 @@ CREATE TABLE `venta` (
   `total` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
 -- Volcado de datos para la tabla `venta`
---
-
 INSERT INTO `venta` (`claveVenta`, `usuario`, `cantidadProducto`, `total`) VALUES
 (1, 'jose@gmail.com', 9, 232),
 (6, 'lulu@gmail.com', 10, 229.68),
 (7, 'lulu@gmail.com', 10, 229.68),
 (8, 'lulu@gmail.com', 10, NULL);
 
---
 -- Índices para tablas volcadas
---
 
---
 -- Indices de la tabla `articulos`
---
 ALTER TABLE `articulos`
   ADD PRIMARY KEY (`cveArticulo`);
 
---
 -- Indices de la tabla `carrito`
---
 ALTER TABLE `carrito`
   ADD UNIQUE KEY `id_compra` (`id_compra`),
   ADD KEY `correo` (`correo`),
-  ADD KEY `cveArticulo` (`cveArticulo`);
+  ADD KEY `cveArticulo` (`cveArticulo`),
+  ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`cveArticulo`) REFERENCES `articulos` (`cveArticulo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
 -- Indices de la tabla `detalleventa`
---
 ALTER TABLE `detalleventa`
   ADD PRIMARY KEY (`claveDetalle`);
 
---
 -- Indices de la tabla `pago`
---
 ALTER TABLE `pago`
   ADD PRIMARY KEY (`clavePago`);
 
---
 -- Indices de la tabla `usuarios`
---
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`correo`);
 
---
 -- Indices de la tabla `venta`
---
 ALTER TABLE `venta`
   ADD PRIMARY KEY (`claveVenta`);
 
---
 -- AUTO_INCREMENT de las tablas volcadas
---
 
---
 -- AUTO_INCREMENT de la tabla `carrito`
---
 ALTER TABLE `carrito`
   MODIFY `id_compra` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
---
 -- AUTO_INCREMENT de la tabla `detalleventa`
---
 ALTER TABLE `detalleventa`
   MODIFY `claveDetalle` int(50) NOT NULL AUTO_INCREMENT;
 
---
 -- AUTO_INCREMENT de la tabla `pago`
---
 ALTER TABLE `pago`
   MODIFY `clavePago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
 -- AUTO_INCREMENT de la tabla `venta`
---
 ALTER TABLE `venta`
   MODIFY `claveVenta` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
---
 -- Restricciones para tablas volcadas
---
 
---
 -- Filtros para la tabla `carrito`
---
 ALTER TABLE `carrito`
   ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`cveArticulo`) REFERENCES `articulos` (`cveArticulo`) ON DELETE CASCADE ON UPDATE CASCADE;
