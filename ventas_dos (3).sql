@@ -161,7 +161,9 @@ ALTER TABLE `usuarios`
 ALTER TABLE `venta`
   ADD PRIMARY KEY (`claveVenta`);
 
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT de las tablas articulos
+ALTER TABLE `articulos`
+  MODIFY `cveArticulo` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 -- AUTO_INCREMENT de la tabla `carrito`
 ALTER TABLE `carrito`
