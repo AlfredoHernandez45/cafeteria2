@@ -39,10 +39,6 @@ require_once('articulo.php');
 			$eliminar->bindValue('cveArticulo',$cveArticulo);
 			$eliminar->execute();
 
-			//Delate de las funciones
-			$eliminar=$db->prepare('DELETE FROM Existencias WHERE cveArticulo=:cveArticulo');
-			$eliminar->bindValue('cveArticulo',$cveArticulo);
-			$eliminar->execute();
 		}
 
 		// Search Busqueda espesifica
