@@ -1,44 +1,38 @@
 <?php
-// Configuración de la base de datos
-$host = 'localhost';
-$db = 'ventas_dos';
-$user = 'root';
-$password = '';
+require_once('crud-usuarios.php');
+require_once('usuario.php');
 
-// Conexión a la base de datos
-$conn = new mysqli($host, $user, $password, $db);
+// Crear una instancia del objeto Usuario
+$usuario = new Usuario();
+// Crear una instancia del objeto CrudUsuario
+$crudUsuario = new CrudUsuario();
 
-// Verificar la conexión
-if ($conn->connect_error) {
-  die('Error de conexión: ' . $conn->connect_error);
-}
-
-// Procesar el formulario de registro
+// Verificar si se ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['usuario'];
-    $password = $_POST['contrasena'];
-  
-  // Consulta para verificar si el usuario ya existe
-  $sql = "SELECT * FROM usuarios WHERE correo = '$email'";
-  $result = $conn->query($sql);
+  // Obtener los valores del formulario
+  $nombre = $_POST['nombre'];
+  $email = $_POST['usuario'];
+  $password = $_POST['contrasena'];
 
-  if ($result->num_rows > 0) {
-    // El usuario ya existe
-    echo 'El nombre de usuario ya está en uso. Por favor, elige otro nombre de usuario.';
+  // busca si existe el correo en la base de datos
+  $usuarioExist = $crudUsuario->obtenerUsuario($email);
+
+  // Si no existe se realiza un nuevo registro
+  if ($usuarioExist->getCorreo() == null) {
+    
+    $usuario->setCorreo($email);
+    $usuario->setPassword($password);
+    $usuario->setNombre($nombre);
+
+    // Llamar a la función insertar del objeto CrudUsuario
+    $crudUsuario->insertar($usuario);
+
+    // Regresa al inicio 
+    echo "<script> window.location='mostrar.usuario.php' </script>";
+
   } else {
-    // Insertar el nuevo usuario en la base de datos
-    $sql = "INSERT INTO usuarios (correo, contrasena) VALUES ('$email','$password')";
-
-    if ($conn->query($sql) === TRUE) {
-      // Registro exitoso
-      echo '¡Registro exitoso! Ahora puedes iniciar sesión con tu nuevo usuario.';
-    } else {
-      // Error al insertar el usuario
-      echo 'Error al registrar el usuario: ' . $conn->error;
-    }
+    echo "<script> alert('Este correo ya existe, Ingrese uno nuevo'); window.history.back(); </script>";
   }
-}
 
-// Cerrar la conexión
-$conn->close();
+}
 ?>

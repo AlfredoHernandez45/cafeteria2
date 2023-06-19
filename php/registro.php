@@ -117,7 +117,7 @@
 			<div class="container" style="background-color:#f1f1f1">
 				<form action="regresa">
 					<!--<a href="index.html">Regresa</a>-->
-					<button type="button" class="cancelbtn"> <a href="../index/index.html">Regresarar</a></button>
+					<button type="button" class="cancelbtn"> <a href="sesion.php">Regresarar</a></button>
 					<!--<button type="button" class="cancelbtn">Regresar</button>-->
 				</form>
 		</form>

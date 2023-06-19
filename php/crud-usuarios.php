@@ -7,12 +7,10 @@ class crudUsuario {
 
     public function insertar($usuario) {
         $db = Db::conectar();
-        $insert = $db->prepare('INSERT INTO usuarios (id_compra, correo, cveArticulo, cantidadProducto, totalPago) VALUES (:idCompra, :correo, :cveArticulo, :cantidadProducto, :totalPago)');
-        $insert->bindValue('idCompra', $usuario->getIdCompra());
+        $insert = $db->prepare('INSERT INTO usuarios (correo, contrasena, nombre) VALUES (:correo, :contrasena, :nombre)');
         $insert->bindValue('correo', $usuario->getCorreo());
-        $insert->bindValue('cveArticulo', $usuario->getCveArticulo());
-        $insert->bindValue('cantidadProducto', $usuario->getCantidadProducto());
-        $insert->bindValue('totalPago', $usuario->getTotalPago());
+        $insert->bindValue('contrasena', $usuario->getPassword());
+        $insert->bindValue('nombre', $usuario->getNombre());
         $insert->execute();
     }
 
@@ -23,21 +21,19 @@ class crudUsuario {
 
         foreach ($select->fetchAll() as $usuario) {
             $myUsuario = new Usuario();
-            $myUsuario->setIdCompra($usuario['id_compra']);
             $myUsuario->setCorreo($usuario['correo']);
-            $myUsuario->setCveArticulo($usuario['cveArticulo']);
-            $myUsuario->setCantidadProducto($usuario['cantidadProducto']);
-            $myUsuario->setTotalPago($usuario['totalPago']);
+            $myUsuario->setPassword($usuario['contrasena']);
+            $myUsuario->setNombre($usuario['nombre']);
             $listaUsuarios[] = $myUsuario;
         }
 
         return $listaUsuarios;
     }
 
-    public function eliminar($idCompra) {
+    public function eliminar($correo) {
         $db = Db::conectar();
-        $eliminar = $db->prepare('DELETE FROM usuarios WHERE id_compra = :idCompra');
-        $eliminar->bindValue('idCompra', $idCompra);
+        $eliminar = $db->prepare('DELETE FROM usuarios WHERE correo = :correo');
+        $eliminar->bindValue('correo', $correo);
         $eliminar->execute();
     }
 
@@ -53,7 +49,7 @@ class crudUsuario {
         $usuario = $select->fetch(); // Obtener la fila de resultados como un arreglo asociativo
 
         $myUsuario = new Usuario(); // Crear una instancia de la clase Usuario para almacenar los datos obtenidos
-
+        
         // Asignar los valores obtenidos de la consulta a las propiedades de la instancia de Usuario
         $myUsuario->setCorreo($usuario['correo']);
         $myUsuario->setPassword($usuario['contrasena']);
@@ -62,16 +58,15 @@ class crudUsuario {
         return $myUsuario; // Devolver la instancia de Usuario con los datos del usuario encontrado
     }
 
-    public function actualizar($usuario) {
-        $db = Db::conectar();
-        $actualizar = $db->prepare('UPDATE usuarios SET correo = :correo, cveArticulo = :cveArticulo, cantidadProducto = :cantidadProducto, totalPago = :totalPago WHERE id_compra = :idCompra');
-        $actualizar->bindValue('idCompra', $usuario->getIdCompra());
-        $actualizar->bindValue('correo', $usuario->getCorreo());
-        $actualizar->bindValue('cveArticulo', $usuario->getCveArticulo());
-        $actualizar->bindValue('cantidadProducto', $usuario->getCantidadProducto());
-        $actualizar->bindValue('totalPago', $usuario->getTotalPago());
-        $actualizar->execute();
-    }
+    // public function actualizar($usuario) {
+    //     $db = Db::conectar();
+    //     $actualizar = $db->prepare('UPDATE usuarios SET correo = :correo, contrasena = :contrasena, nombre = :nombre WHERE id_compra = :idCompra');
+    //     $actualizar->bindValue(':idCompra', $usuario->getIdCompra());
+    //     $actualizar->bindValue(':correo', $usuario->getCorreo());
+    //     $actualizar->bindValue(':contrasena', $usuario->getContrasena());
+    //     $actualizar->bindValue(':nombre', $usuario->getNombre());
+    //     $actualizar->execute();
+    // }
 }
 
 ?>
