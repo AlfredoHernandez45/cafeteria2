@@ -4,17 +4,6 @@ class Usuario {
     private $correo;
     private $password;
     private $nombre;
-    // private $totalPago;
-    
-    // public function __construct() {}
-
-    // public function getIdCompra() {
-    //     return $this->idCompra;
-    // }
-
-    // public function setIdCompra($idCompra) {
-    //     $this->idCompra = $idCompra;
-    // }
 
     public function getCorreo() {
         return $this->correo;
@@ -40,12 +29,5 @@ class Usuario {
         $this->nombre = $nombre;
     }
 
-    // public function getTotalPago() {
-    //     return $this->totalPago;
-    // }
-
-    // public function setTotalPago($totalPago) {
-    //     $this->totalPago = $totalPago;
-    // }
 }
 ?>
