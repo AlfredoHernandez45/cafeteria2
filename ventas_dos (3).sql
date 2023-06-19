@@ -1,25 +1,10 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2023 a las 20:50:42
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `ventas_dos`
 --
+
+CREATE DATABASE IF NOT EXISTS `ventas_dos`;
+USE `ventas_dos`;
 
 -- --------------------------------------------------------
 
@@ -27,7 +12,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `articulos`
 --
 
-CREATE TABLE `articulos` (
+CREATE TABLE IF NOT EXISTS `articulos` (
   `cveArticulo` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `precio` float NOT NULL
@@ -49,7 +34,7 @@ INSERT INTO `articulos` (`cveArticulo`, `nombre`, `precio`) VALUES
 -- Estructura de tabla para la tabla `carrito`
 --
 
-CREATE TABLE `carrito` (
+CREATE TABLE IF NOT EXISTS `carrito` (
   `id_compra` int(50) NOT NULL,
   `correo` varchar(50) DEFAULT NULL,
   `cveArticulo` varchar(50) NOT NULL,
@@ -77,7 +62,7 @@ INSERT INTO `carrito` (`id_compra`, `correo`, `cveArticulo`, `cantidadProducto`,
 -- Estructura de tabla para la tabla `detalleventa`
 --
 
-CREATE TABLE `detalleventa` (
+CREATE TABLE IF NOT EXISTS `detalleventa` (
   `claveDetalle` int(50) NOT NULL,
   `claveVenta` int(50) NOT NULL,
   `correoUsuario` varchar(50) NOT NULL,
@@ -95,7 +80,7 @@ CREATE TABLE `detalleventa` (
 -- Estructura de tabla para la tabla `pago`
 --
 
-CREATE TABLE `pago` (
+CREATE TABLE IF NOT EXISTS `pago` (
   `clavePago` int(50) NOT NULL,
   `opcionPago` varchar(50) NOT NULL,
   `cuentaBancaria` varchar(50) NOT NULL,
@@ -111,7 +96,7 @@ CREATE TABLE `pago` (
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `correo` varchar(50) NOT NULL,
   `contrasena` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL
@@ -133,7 +118,7 @@ INSERT INTO `usuarios` (`correo`, `contrasena`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `venta`
 --
 
-CREATE TABLE `venta` (
+CREATE TABLE IF NOT EXISTS `venta` (
   `claveVenta` int(50) NOT NULL,
   `cveArticulo` varchar(50) NOT NULL,
   `cantidadProducto` int(11) NOT NULL,
@@ -196,8 +181,4 @@ ALTER TABLE `venta`
 --
 ALTER TABLE `carrito`
   ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`cveArticulo`) REFERENCES `articulos` (`cveArticulo`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
