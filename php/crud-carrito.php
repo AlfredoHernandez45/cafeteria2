@@ -34,10 +34,10 @@ class CrudCarrito {
 		return $listaCarrito;
 	}
 
-	public function eliminar($idCarrito) {
+	public function eliminar($correo) {
 		$db = Db::conectar();
-		$eliminar = $db->prepare('DELETE FROM carrito WHERE idCarrito = :idCarrito');
-		$eliminar->bindValue('idCarrito', $idCarrito);
+		$eliminar = $db->prepare('DELETE FROM carrito WHERE correo = :correo');
+		$eliminar->bindValue('correo', $correo);
 		$eliminar->execute();
 	}
 
