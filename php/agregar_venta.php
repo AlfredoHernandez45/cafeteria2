@@ -1,5 +1,5 @@
 <?php
-require_once('../php/crud-ventas.php');
+require_once('crud-ventas.php');
 require_once('ventas.php');
 
 // Crear las instancias
