@@ -40,7 +40,7 @@ session_start();
         <a href="#" class="logo">
             <img src="img/logo.png" alt="">
         </a>
-        Eliminar
+        <!-- Eliminar -->
         <i class='bx bx-menu' id="menu-icon"></i>
         <ul class="navbar">
             <li><a href="#inicio">Inicio</a></li>   
@@ -54,12 +54,12 @@ session_start();
                 echo '<li><a href="cerrar-sesion.php">Cerra Sesión</a></li>';
             }
             ?>
-            <li><a href="mostrar-pago.php">Pagos Realizados</a></li> 
+            <li><a href="../pago/mostrar-pago.php">Pagos Realizados</a></li> 
         </ul>
 
         <div class="header-icon">
-            <i class='bx bx-cart-alt'></i>
-            <i class='bx bx-search' id="search-icon"></i>
+            <!-- <i class='bx bx-cart-alt'></i> -->
+            <!-- <i class='bx bx-search' id="search-icon"></i> -->
         </div>
     </header>
       
@@ -99,7 +99,7 @@ session_start();
 			<div class="products-container">
                 
                 <div class="box">
-                    <img src="img/frape.png" alt="">
+                    <img src="im/capucciono.png" alt="">
                     <h3><?php echo $articulo->getNombre() ?></h3><!--Muestra el nombre del producto -->
                     <div class="content">
                         <span> $<?php echo $articulo->getPrecio() ?> Pesos </span><!--Muestra el precio del producto -->
@@ -110,7 +110,7 @@ session_start();
             </div>
             <?php }?>
 
-            <br>
+            <!-- <br>
                 <table border=1>
                     <head>
                         <td>cveArticulos</td>
@@ -118,35 +118,34 @@ session_start();
 			            <td>precio</td>
                     </head>
                     <body>
-                        <?php foreach ($listaArticulos as $articulo) {?>
+                        <?php //foreach ($listaArticulos as $articulo) {?>
                             <tr>
-                                <td><?php echo $articulo->getCveArticulo() ?></td>
-                                <td><?php echo $articulo->getNombre() ?></td>
-                                <td><?php echo $articulo->getPrecio() ?></td>
+                                <td><?php //echo $articulo->getCveArticulo() ?></td>
+                                <td><?php //echo $articulo->getNombre() ?></td>
+                                <td><?php //echo $articulo->getPrecio() ?></td>
 			
-                                <td><a href="actualizar.php?cveArticulo=<?php echo $articulo->getCveArticulo()?>&accion=a">Actualizar</a> </td>
-				                <td><a href="admin_articulo.php?cveArticulo=<?php echo $articulo->getCveArticulo()?>&accion=e">Eliminar</a> </td>
+                                <td><a href="actualizar.php?cveArticulo=<?php //echo $articulo->getCveArticulo()?>&accion=a">Actualizar</a> </td>
+				                <td><a href="admin_articulo.php?cveArticulo=<?php //echo $articulo->getCveArticulo()?>&accion=e">Eliminar</a> </td>
                             </tr>
-                            <?php }?>
+                            <?php// }?>
                         </body>
                     </table>
 
                     
-                <br>
-                <!-- Tabla para ingresar mas productos -->
-                <table border=1 cellspacing="5" width="30%" bgcolor="FFFFFF">   
+                <br>-->
+                <!-- Tabla para ingresar mas productos  -->
+                <!-- <table border=1 cellspacing="5" width="30%" bgcolor="FFFFFF">   
                     <tr>
                         <td><a href="ingresar.php">Ingresar Más Productos</a></td>
                         <td><a href="mostrar.php">Refrescar Productos</a></td>
                     </tr>
                 </table>
-                </center>
+                </center> -->
             </section>
             <a name="direccion"></a> <!-- Vinculos del menu a direccionar Productos -->
             <div class="footer">
-                <p><h3> Contacto: 9831234567 <br> Dirección:  Av. Andres Quintana Roo entre Insurgentes y Juan José Siorda! https://goo.gl/maps/ik7cVLSPsWrWVMNT9</h3></p>
+                <p><h3 style="color: white;"> Contacto: 9831234567 <br> Dirección:  Av. Andres Quintana Roo entre Insurgentes y Juan José Siorda! https://goo.gl/maps/ik7cVLSPsWrWVMNT9</h3></p>
             </div>
-            <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
             <df-messenger
                 chat-title="Cafeteria_IA"
                 agent-id="39350e75-1a68-444d-bc1d-66843bd6dca3"

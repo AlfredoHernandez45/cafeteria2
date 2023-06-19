@@ -57,10 +57,10 @@ require_once('articulo.php');
 		// }
 
 		// Search Busqueda espesifica
-		public function obtenerArticulo($correo){
+		public function obtenerArticulo($email){
 			$db=Db::conectar();
-			$select=$db->prepare('SELECT * FROM pago WHERE correo = :correo');
-			$select->bindValue('correo',$correo);
+			$select=$db->prepare('SELECT * FROM pago WHERE email = :email');
+			$select->bindValue('email',$email);
 			$select->execute();
 
 			$filas=$select->fetchAll();
@@ -68,7 +68,7 @@ require_once('articulo.php');
 			$ventas = [];
 
 			foreach($filas as $fila){
-				$venta = new Venta();
+				$venta = new Articulos();
 				$venta->setNombre($fila['nombre']);
 				$venta->setEmail($fila['email']);
 				$venta->setTelefono($fila['telefono']);

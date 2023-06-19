@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $crudCarrito->eliminar($_SESSION['correo']);
     // Redirigir a la página mostrar-pago.php después de insertar
-    header('Location: mostrar-pago.php');
+    header('Location: mostrar-pago-usuario.php');
 } else {
     echo 'No se recibió la información del artículo';
 }

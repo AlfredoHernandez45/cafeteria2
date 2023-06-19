@@ -49,7 +49,7 @@ session_start();
 					echo '<li><a href="cerrar-sesion.php">Cerra Sesión</a></li>';
 				}
 			?>
-			<li><a href="../pago/mostrar-pago.php">Pagos Realizados</a></li>
+			<li><a href="../pago/mostrar-pago-usuario.php">Pagos Realizados</a></li>
 		</ul>
 
 		<div class="header-icon">
@@ -133,7 +133,7 @@ session_start();
 	<footer>
 		<div class="footer">
 			<p>
-			<h3> Contacto: 9831234567 <br> Dirección: Av. Andres Quintana Roo entre Insurgentes y Juan José Siorda!
+			<h3 style="color: white;"> Contacto: 9831234567 <br> Dirección: Av. Andres Quintana Roo entre Insurgentes y Juan José Siorda!
 				https://goo.gl/maps/ik7cVLSPsWrWVMNT9</h3>
 			</p>
 		</div>

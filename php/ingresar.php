@@ -43,10 +43,10 @@ h1{
   <br>
   <br>
 	<table>
-		<tr>
+		<!-- <tr>
 			<td>Id Articulo:</td>
 			<td> <input type='text' name='cveArticulo'></td>
-		</tr>
+		</tr> -->
 		<tr>
 			<td>Nombre:</td>
 			<td><input type='text' name='nombre' ></td>
