@@ -37,7 +37,7 @@ $listaArticulos=$crud->mostrar();
 			<?php }?>
 		</body>
 	</table>
-	<a href="">Volver</a>
+	<a href="../php/index.php">Volver al inicio</a>
 </body>
 </html>
 

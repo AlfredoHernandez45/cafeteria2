@@ -3,6 +3,8 @@
 // require_once('../php/conexion.php');
 require_once('articulo.php');
 require_once('crud.php');
+require_once('../php/crud-carrito.php');
+session_start();
 
 // verificar si se recibió el formulario con la información del artículo
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,6 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Llamar a la función insertar y pasar el objeto articulo como parámetro
     $crud->insertar($miArticulo);
 
+    $crudCarrito = new CrudCarrito();
+
+    $crudCarrito->eliminar($_SESSION['correo']);
     // Redirigir a la página mostrar-pago.php después de insertar
     header('Location: mostrar-pago.php');
 } else {
