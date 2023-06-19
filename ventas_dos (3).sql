@@ -143,8 +143,7 @@ ALTER TABLE `articulos`
 ALTER TABLE `carrito`
   ADD UNIQUE KEY `id_compra` (`id_compra`),
   ADD KEY `correo` (`correo`),
-  ADD KEY `cveArticulo` (`cveArticulo`),
-  ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`cveArticulo`) REFERENCES `articulos` (`cveArticulo`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD KEY `cveArticulo` (`cveArticulo`);
 
 -- Indices de la tabla `detalleventa`
 ALTER TABLE `detalleventa`
@@ -179,9 +178,3 @@ ALTER TABLE `pago`
 -- AUTO_INCREMENT de la tabla `venta`
 ALTER TABLE `venta`
   MODIFY `claveVenta` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
--- Restricciones para tablas volcadas
-
--- Filtros para la tabla `carrito`
-ALTER TABLE `carrito`
-  ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`cveArticulo`) REFERENCES `articulos` (`cveArticulo`) ON DELETE CASCADE ON UPDATE CASCADE;
