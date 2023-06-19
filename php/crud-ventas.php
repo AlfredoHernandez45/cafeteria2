@@ -1,14 +1,13 @@
 <?php
 require_once('conexion.php');
-require_once('venta.php');
+require_once('ventas.php');
 
-class CrudVenta
-{
+class CrudVenta {
     public function __construct(){}
 
     public function insertar($venta) {
         $db = Db::conectar();
-        $insert = $db->prepare('INSERT INTO ventas (usuario, cantidad_producto, total) VALUES (:usuario, :cantidadProducto, :total)');
+        $insert = $db->prepare('INSERT INTO venta (usuario, cantidadProducto, total) VALUES (:usuario, :cantidadProducto, :total)');
         $insert->bindValue('usuario', $venta->getUsuario());
         $insert->bindValue('cantidadProducto', $venta->getCantidadProducto());
         $insert->bindValue('total', $venta->getTotal());
