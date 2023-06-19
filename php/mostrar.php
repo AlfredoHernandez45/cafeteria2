@@ -25,6 +25,8 @@ $crud=new crudArticulo();
 $articulo= new Articulos();
 //obtiene todos los articulos con el método mostrar de la clase crud
 $listaArticulos=$crud->mostrar();
+session_start();
+
 ?>
 
 <html>
