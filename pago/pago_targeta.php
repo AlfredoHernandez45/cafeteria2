@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
   <div class="container">
     <h1>CARGO UNICO</h1>
-    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+    <form action='admin.php' method='post'>
       <label for="img"> 
         <img src="img/Logo1.png" height="30" width="100">
         <img src="img/Logo2.png" height="50" width="100">
@@ -24,18 +24,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <label for="nombre">Nombre del Cliente:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
       <label for="E-mail">E-mail:</label>
-      <input type="text" id="E-mail" name="E-mail" placeholder="E-mail" required>
+      <input type="text" id="E-mail" name="email" placeholder="E-mail" required>
       <label for="telefono">Telefono:</label>
       <input type="text" id="telefono" name="telefono" placeholder="Telefono" required>
       <label><p>DATOS DE LA TARJETA</p></label>
       <label for="numero-tarjeta">Número de tarjeta:</label>
-      <input type="text" id="numero-tarjeta" name="numero-tarjeta" placeholder="Numero-Tarjeta" required>
+      <input type="text" id="numero-tarjeta" name="numerotarjeta" placeholder="Numero-Tarjeta" required>
       <label for="fecha-expiracion">Fecha de expiración:</label>
-      <input type="text" id="fecha-expiracion" name="fecha-expiracion" placeholder="MM/AA" required>
+      <input type="text" id="fecha-expiracion" name="fechaexpiracion" placeholder="MM/AA" required>
       <label for="cvv">CVV:</label>
       <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
       <label for="Importe">Importe a Pagar:</label>
-      <input type="text" id="Importe" name="Importe" placeholder="Importe">
+      <input type="text" id="Importe" name="importe" placeholder="Importe">
       <input type="submit" value="Pagar" href="../php/carrito-principal.php">
       <button><a type="submit" a href="../php/carrito-principal.php">Regresar</a></button>
     </form>

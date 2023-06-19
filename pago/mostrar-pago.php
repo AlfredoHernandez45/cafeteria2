@@ -1,45 +1,45 @@
 <?php
-// Configuración de la conexión a la base de datos
-$servername = "nombre_servidor";
-$username = "nombre_usuario";
-$password = "contraseña";
-$dbname = "nombre_base_de_datos";
-
-// Crear la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
-
-// Consulta para obtener los registros de los pagos
-$sql = "SELECT NombreCliente, NumeroTarjeta, ImportePago FROM Pagos";
-$result = $conn->query($sql);
-
-// Verificar si hay resultados
-if ($result->num_rows > 0) {
-    // Mostrar los datos de cada pago
-    while ($row = $result->fetch_assoc()) {
-        $nombreCliente = $row["NombreCliente"];
-        $numeroTarjeta = $row["NumeroTarjeta"];
-        $importePago = $row["ImportePago"];
-
-        echo "Nombre del Cliente: " . $nombreCliente . "<br>";
-        echo "Número de Tarjeta: " . $numeroTarjeta . "<br>";
-        echo "Importe Pagado: " . $importePago . "<br>";
-        echo "<br>";
-    }
-} else {
-    echo "No se encontraron registros de pagos.";
-}
-
-// Cerrar la conexión
-$conn->close();
+//incluye la clase Libro y CrudLibro
+require_once('crud.php');
+require_once('articulo.php');
+$crud=new crudArticulo();
+$articulo= new Articulos();
+//obtiene todos los libros con el método mostrar de la clase crud
+$listaArticulos=$crud->mostrar();
 ?>
 
-
-
+<html>
+<head>
+	<title>Mostrar articulos</title>
+</head>
+<body>
+	<table border=1>
+		<head>
+			<td>NOMBRE</td>
+			<td>E-MAIL</td>
+			<td>Telefono</td>
+			<td>NUMERO-TARGETA</td>
+			<td>FECHA-EXPIRACION</td>
+            <td>CVV</td>
+            <td>Importe<td>
+		</head>
+		<body>
+			<?php foreach ($listaArticulos as $articulo) {?>
+			<tr>
+				<td><?php echo $articulo->getNombre() ?></td>
+				<td><?php echo $articulo->getEmail() ?></td>
+				<td><?php echo $articulo->getTelefono() ?></td>
+				<td><?php echo $articulo->getNumerotarjeta() ?></td>
+				<td><?php echo $articulo->getFechaexpiracion() ?></td>
+                <td><?php echo $articulo->getCvv() ?></td>
+                <td><?php echo $articulo->getImporte() ?></td>
+			</tr>
+			<?php }?>
+		</body>
+	</table>
+	<a href="">Volver</a>
+</body>
+</html>
 
 
 
