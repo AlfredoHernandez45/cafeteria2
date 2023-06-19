@@ -13,19 +13,19 @@ $listaArticulos = $crud->mostrar();
 
 
 // asignar un usuario aleatorio para identificar los
-function generarTextoAleatorio($longitud) {
-	$caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-	$textoAleatorio = '';
+// function generarTextoAleatorio($longitud) {
+// 	$caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+// 	$textoAleatorio = '';
 
-	for ($i = 0; $i < $longitud; $i++) {
-		$textoAleatorio .= $caracteres[rand(0, strlen($caracteres) - 1)];
-	}
+// 	for ($i = 0; $i < $longitud; $i++) {
+// 		$textoAleatorio .= $caracteres[rand(0, strlen($caracteres) - 1)];
+// 	}
 
-	return $textoAleatorio;
-}
+// 	return $textoAleatorio;
+// }
 
 // Ejemplo de uso
-$texto = generarTextoAleatorio(10);
+// $texto = generarTextoAleatorio(10);
 // echo $texto;
 
 session_start();
@@ -41,10 +41,10 @@ session_start();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Cafeteria</title>
-	
+
 	<!-- Aquí se incluyen los enlaces de las hojas de estilo -->
 	<link rel="stylesheet" href="ste.css">
-    <link rel="stylesheet" href="mainstyle-blog.php">
+	<link rel="stylesheet" href="mainstyle-blog.php">
 </head>
 
 <body>
@@ -108,11 +108,11 @@ session_start();
 						<img src="im/comida1.jpg" alt="cafe">
 
 						<!-- Se muestra el nombre del producto -->
-						<h3><?php echo $articulo->getNombre(); ?></h3>						
+						<h3> <?php echo $articulo->getNombre(); ?> </h3>
 						<div class="content">
 
 							<!-- Se muestra el precio del producto -->
-							<span>$<?php echo $articulo->getPrecio(); ?> Mx</span>
+							<span>$ <?php echo $articulo->getPrecio(); ?> Mx </span>
 
 							<!-- Se agrega el formulario para agregar al carrito -->
 							<form action="agregar_al_carrito.php" method="post">
@@ -132,32 +132,32 @@ session_start();
 								<P>Cantidad: <input type="number" name="cantidad" value="1"></P>
 								<!-- <?php echo $_SESSION['correo']; ?> texto para usuario -->
 
-									<!-- Se agrega un botón para enviar el formulario -->
-									<button type="submit" name="agregarCarrito">Agregar al carrito</button>
-								</form>
-							</div>
+								<!-- Se agrega un botón para enviar el formulario -->
+								<button type="submit" name="agregarCarrito">Agregar al carrito</button>
+							</form>
 						</div>
 					</div>
+				</div>
 			<?php } ?>
 			<!-- Finaliza el bucle foreach -->
 			<br>
 		</section>
 	</center>
 	<!-- FINAL - Aquí se encuentran los productos -->
-	
+
 	<!-- INICIO - Aquí se encuentra el pie de página -->
 	<a name="direccion"></a> <!-- Vinculos del menu a direccionar Productos -->
 	<footer>
 		<div class="footer">
 			<p>
-				<h3> Contacto: 9831234567 <br> Dirección: Av. Andres Quintana Roo entre Insurgentes y Juan José Siorda! https://goo.gl/maps/ik7cVLSPsWrWVMNT9</h3>
+			<h3> Contacto: 9831234567 <br> Dirección: Av. Andres Quintana Roo entre Insurgentes y Juan José Siorda!
+				https://goo.gl/maps/ik7cVLSPsWrWVMNT9</h3>
 			</p>
 		</div>
 	</footer>
-	
+
 	<!-- FINAL - Aquí se encuentra el pie de página -->
 
 </body>
 
 </html>
-
