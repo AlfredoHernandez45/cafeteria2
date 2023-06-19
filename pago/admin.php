@@ -1,6 +1,6 @@
 <?php
 // incluir archivos de configuración de la base de datos
-require_once('conexion.php');
+// require_once('../php/conexion.php');
 require_once('articulo.php');
 require_once('crud.php');
 
