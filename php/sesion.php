@@ -96,9 +96,9 @@
       </div>
       <div class="container" style="background-color:#f1f1f1">
       <form action="regresa">
-        <!--<a href="index.html">Regresa</a>-->
-        <button type="button" onclick="window.history.back();" class="cancelbtn">Regresar</button>
-        <!--<button type="button" class="cancelbtn">Regresar</button>-->
+        <!-- <a class="cancelbtn" href="index.php">Regresa</a> -->
+        <!-- <button type="button" onclick="index.php" class="cancelbtn">Regresar</button> -->
+        <button type="button" class="cancelbtn"><a href="index.php">Regresa</a></button>
       </form>
     </form>
     <br>
