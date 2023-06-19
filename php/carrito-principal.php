@@ -13,7 +13,7 @@ $crudArticulo = new crudArticulo();
 
 $listaArticulos = $crudCarrito->obtenerCarrito($_SESSION['correo']);
 $subtotal = 0;
-
+$cantidadCafe = 0;
 
 ?>
 <!-- Termina Conexion con la base de datos -->
@@ -90,7 +90,10 @@ $subtotal = 0;
 								</div>
 								<div class="cantidad_producto">
 									<p>
-										<?php echo $carrito->getCantidadProducto() ?>
+										<?php
+										$cantidadCafe += $carrito->getCantidadProducto();
+										echo $carrito->getCantidadProducto();
+										?>
 									</p>
 								</div>
 								<div class="precio_producto">
@@ -137,12 +140,18 @@ $subtotal = 0;
 					<div class="fin_compra">
 						<form action="agregar_venta.php" method="post">
 
-							<!-- <h2>prueba10</h2> $crudCarrito-->
+							<input type="hidden" name="usuario" value="<?php echo $_SESSION['correo'] ?>">
+							<!-- <input type="text" name="cveArticulo" value="<?php //echo $carrito->getCveArticulo(); ?>"> -->
+							<input type="hidden" name="cantidadProducto" value="<?php echo $cantidadCafe; ?>">
+							<!-- <input type="text" name="subtotal" value="<?php //echo $subtotal; ?>"> -->
+							<input type="hidden" name="total" value="<?php echo $totalFinal; ?>">
+							
+							<?php
+							if (!empty($_SESSION['correo'])) {
+								echo '<button type="submit" name="agregarCarrito">Realizar Pago</button>';
+							}
+							?>
 
-							<!-- <h2>prueba10</h2> -->
-
-							<!-- <button>Realizar Pago</button> -->
-							<button type="submit" name="agregarCarrito">Realizar Pago</button>
 							<!-- <button><a href="../pago/pago_targeta.php">Realizar Pago</a></button> -->
 						</form>
 					</div>
