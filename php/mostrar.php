@@ -44,7 +44,14 @@ $listaArticulos=$crud->mostrar();
             <li><a href="#inicio">Inicio</a></li>   
             <li><a href="#producttos">Productos</a></li> <!-- Vinculos del menu a direccionar -->
             <li><a href="#direccion">Dirección y Contacto</a></li>
-            <li><a href="sesion.php">Iniciar Sesión</a></li> <!-- iniciar sesion -->
+            <?php
+            // Si no ha iniciado sesion 
+            if (empty($_SESSION['correo'])) {
+                echo '<li><a href="sesion.php">Iniciar Sesion</a></li>';
+            } else {
+                echo '<li><a href="cerrar-sesion.php">Cerra Sesión</a></li>';
+            }
+            ?>
             <li><a href="mostrar-pago.php">Pagos Realizados</a></li> 
         </ul>
 

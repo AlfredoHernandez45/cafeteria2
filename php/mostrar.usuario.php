@@ -67,6 +67,7 @@ session_start();
 					echo '<li><a href="cerrar-sesion.php">Cerra Sesión</a></li>';
 				}
 			?>
+			<li><a href="mostrar-pago.php">Pagos Realizados</a></li>
 		</ul>
 
 		<div class="header-icon">
