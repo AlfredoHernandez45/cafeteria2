@@ -8,28 +8,10 @@ $crud = new crudArticulo();
 $articulo = new Articulos();
 $crudUsuario = new crudUsuario();
 $usuario = new Usuario();
-// Obtiene todos los articulos usando el método mostrar de la clase CRUD
+
 $listaArticulos = $crud->mostrar();
 
-
-// asignar un usuario aleatorio para identificar los
-// function generarTextoAleatorio($longitud) {
-// 	$caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-// 	$textoAleatorio = '';
-
-// 	for ($i = 0; $i < $longitud; $i++) {
-// 		$textoAleatorio .= $caracteres[rand(0, strlen($caracteres) - 1)];
-// 	}
-
-// 	return $textoAleatorio;
-// }
-
-// Ejemplo de uso
-// $texto = generarTextoAleatorio(10);
-// echo $texto;
-
 session_start();
-
 
 ?>
 
@@ -67,7 +49,7 @@ session_start();
 					echo '<li><a href="cerrar-sesion.php">Cerra Sesión</a></li>';
 				}
 			?>
-			<li><a href="mostrar-pago.php">Pagos Realizados</a></li>
+			<li><a href="../pago/mostrar-pago.php">Pagos Realizados</a></li>
 		</ul>
 
 		<div class="header-icon">

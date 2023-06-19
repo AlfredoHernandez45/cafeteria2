@@ -43,7 +43,7 @@ $total = $importe->getTotal();
 			<input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
 
 			<label for="E-mail">E-mail:</label>
-			<input type="text" id="E-mail" name="email" placeholder="E-mail" required>
+			<input type="text" id="E-mail" name="email" placeholder="E-mail" value="<?php echo $_SESSION['correo']; ?>" required>
 
 			<label for="telefono">Telefono:</label>
 			<input type="text" id="telefono" name="telefono" placeholder="Telefono" required>

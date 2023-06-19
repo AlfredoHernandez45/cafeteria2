@@ -57,22 +57,39 @@ require_once('articulo.php');
 		// }
 
 		// Search Busqueda espesifica
-		// public function obtenerArticulo($nombre){
-		// 	$db=Db::conectar();
-		// 	$select=$db->prepare('SELECT * FROM pago WHERE nombre=:nombre');
-		// 	$select->bindValue('nombre',$nombre);
-		// 	$select->execute();
+		public function obtenerArticulo($correo){
+			$db=Db::conectar();
+			$select=$db->prepare('SELECT * FROM pago WHERE correo = :correo');
+			$select->bindValue('correo',$correo);
+			$select->execute();
 
-		// 	$articulo=$select->fetch();
-		// 	$myArticulo->setNombre($articulo['nombre']);
-		// 	$myArticulo->setEmail($articulo['email']);
-		// 	$myArticulo->setTelefono($articulo['telefono']);
-		// 	$myArticulo->setNumerotarjeta($articulo['numerotarjeta']);
-		// 	$myArticulo->setFechaexpiracion($articulo['fechaexpiracion']);
-		// 	$myArticulo->setCvv($articulo['cvv']);
-		// 	$myArticulo->setImporte($articulo['importe']);
-		// 	return $myArticulo;
-		// }
+			$filas=$select->fetchAll();
+
+			$ventas = [];
+
+			foreach($filas as $fila){
+				$venta = new Venta();
+				$venta->setNombre($fila['nombre']);
+				$venta->setEmail($fila['email']);
+				$venta->setTelefono($fila['telefono']);
+				$venta->setNumerotarjeta($fila['numerotarjeta']);
+				$venta->setFechaexpiracion($fila['fechaexpiracion']);
+				$venta->setCvv($fila['cvv']);
+				$venta->setImporte($fila['importe']);
+
+				$ventas[] = $venta;
+			}
+
+			// $myArticulo->setNombre($articulo['nombre']);
+			// $myArticulo->setEmail($articulo['email']);
+			// $myArticulo->setTelefono($articulo['telefono']);
+			// $myArticulo->setNumerotarjeta($articulo['numerotarjeta']);
+			// $myArticulo->setFechaexpiracion($articulo['fechaexpiracion']);
+			// $myArticulo->setCvv($articulo['cvv']);
+			// $myArticulo->setImporte($articulo['importe']);
+			// return $myArticulo;
+			return $ventas;
+		}
 
 		// Update
 		// public function actualizar($articulo){
