@@ -37,11 +37,11 @@ class CrudVenta {
         $eliminar->execute();
     }
 
-    public function obtenerVenta($idVenta) {
+    public function obtenerVenta($usuario) {
         $db = Db::conectar();
 
-        $select = $db->prepare('SELECT * FROM ventas WHERE id_venta = :idVenta');
-        $select->bindValue('idVenta', $idVenta);
+        $select = $db->prepare('SELECT * FROM venta WHERE usuario = :usuario');
+        $select->bindValue('usuario', $usuario);
 
         $select->execute();
 
@@ -49,9 +49,10 @@ class CrudVenta {
 
         $myVenta = new Venta();
         $myVenta->setUsuario($venta['usuario']);
-        $myVenta->setCantidadProducto($venta['cantidad_producto']);
+        $myVenta->setCantidadProducto($venta['cantidadProducto']);
         $myVenta->setTotal($venta['total']);
 
+        // return $ventas;
         return $myVenta;
     }
 

@@ -144,11 +144,15 @@ $cantidadCafe = 0;
 							<!-- <input type="text" name="cveArticulo" value="<?php //echo $carrito->getCveArticulo(); ?>"> -->
 							<input type="hidden" name="cantidadProducto" value="<?php echo $cantidadCafe; ?>">
 							<!-- <input type="text" name="subtotal" value="<?php //echo $subtotal; ?>"> -->
-							<input type="hidden" name="total" value="<?php echo $totalFinal; ?>">
-							
+							<?php $_SESSION['importe'] = $totalFinal; ?>
+							<!-- <input type="hidden" name="total" value="<?php //echo $_SESSION['importe'] = $totalFinal; ?>"> -->
+
 							<?php
 							if (!empty($_SESSION['correo'])) {
 								echo '<button type="submit" name="agregarCarrito">Realizar Pago</button>';
+							}
+							if ($totalFinal == 0) {
+								echo '<script>alert("No se ha agregado nada al carrito"); window.history.back();</script>';
 							}
 							?>
 
